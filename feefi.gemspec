@@ -7,10 +7,10 @@ Gem::Specification.new do |spec|
   spec.name          = "feefi"
   spec.version       = Feefi::VERSION
   spec.authors       = ["Hank Beaver"]
-  spec.email         = ["hank.beaver@blinqmedia.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.email         = ["hbeaver@gmail.com"]
+  spec.description   = %q{Elastic Beanstalk CLI to tame the behemoth of ways to interact with Beanstalk}
+  spec.summary       = %q{}
+  spec.homepage      = "http://www.github.com/blasterpal/feefi"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
@@ -20,4 +20,8 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+
+  spec.add_dependency "thor"
+  spec.add_dependency "fog"
+
 end

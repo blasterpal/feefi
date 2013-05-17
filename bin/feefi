@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+$:.unshift File.expand_path("../../lib", __FILE__)
+require 'feefi/cli'
+puts "Starting feefi..."
+Feefi::Cli.start
