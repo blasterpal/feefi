@@ -1,16 +1,20 @@
 # Feefi (alpha)
 
-Feefi trys to make working with Elastic Beanstalk a little simpler.
+Feefi a not-so-giant sized CLI for Elastic Beanstalk
 
 ## Installation
 
+    ```
     $ gem install feefi
+    ```
 
 ## Usage
 
 1. Create a the skeleton config directory and file.
 
+    ```
     $ feefi setup
+    ```
 
 2. Edit ~/.feefi/feefi.conf and add your own Beanstalk apps(s) and AWS credentials
 for each. 
@@ -25,6 +29,7 @@ for each.
 
 ## TODO
 
+0. TESTS!
 1. Add interactive add/delete of apps and credentials
 2. Install git hooks into current repo
 3. pem/key management
@@ -41,3 +46,5 @@ for each.
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+
