@@ -1,0 +1,18 @@
+---
+:apps:
+- :name: my_beanstalk_app
+:aws_config: {}
+:aws_id: ASADFADFSDF
+:aws_secret: '!@#$!@#!@$'
+:environments:
+- staging
+- production
+
+- :name: 
+:aws_config: {}
+:aws_id: ASADFADFSDF
+:aws_secret: '!@#$!@#!@$'
+:environments:
+- staging
+- production
+

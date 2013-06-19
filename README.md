@@ -1,6 +1,6 @@
-# Feefi
+# Feefi (alpha)
 
-TODO: Write a gem description
+Feefi trys to make working with Elastic Beanstalk a little simpler.
 
 ## Installation
 
@@ -18,7 +18,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+
+
 
 ## Contributing
 

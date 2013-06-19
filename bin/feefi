@@ -1,5 +1,14 @@
 #!/usr/bin/env ruby
 $:.unshift File.expand_path("../../lib", __FILE__)
 require 'feefi/cli'
-puts "Starting feefi..."
+
+if File.exists? Feefi::FEEFI_CONFIG_FILE
+  Feefi::Config.config = Hashie::Mash.new YAML.load(File.open(Feefi::FEEFI_CONFIG_FILE).read)
+elsif ARGV[0] == 'setup'
+  #pass on by, this is hack for now
+else
+  puts "You need to run 'setup'!"
+  exit
+end
+
 Feefi::Cli.start
