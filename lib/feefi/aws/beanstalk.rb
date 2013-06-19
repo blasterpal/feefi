@@ -1,18 +1,22 @@
 module Feefi::AWS
   class Beanstalk
+    include Feefi::Helpers
+
     attr_accessor :aws, :config
     def initialize(aws,config)
       @aws = aws
+      @beanstalk_connection = aws.beanstalk_connection
+      @ec2_connection = aws.ec2_connection
       @config = config
     end
     
     # Obtains a list of configuration templates for the current beanstalk app
     def list_templates
-      @aws.beanstalk_connection.describe_applications.body['DescribeApplicationsResult']['Applications'].first['ConfigurationTemplates']
+      @beanstalk_connection.templates.map(&:name)
     end
     
     def delete_template(name)
-      binding.pry
+        @beanstalk_connection.templates.get( @config.name, name).destroy
     end
     
     # gets the current EB OS Environment variables for the deployed app on a
@@ -32,6 +36,7 @@ module Feefi::AWS
     
     # List it out all environments for an application
     def eb_environments
+      @aws.beanstalk_connectoin
       binding.pry 
     end
     

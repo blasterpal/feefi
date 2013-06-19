@@ -9,6 +9,7 @@ require 'feefi/aws/beanstalk'
 class Feefi::Cli < Thor
 
   include Feefi::Helpers 
+  include Thor::Actions
 
   desc "setup", "Setup your feefi, creates ~/.feefi and writes config"
   def setup
@@ -43,9 +44,10 @@ class Feefi::Cli < Thor
       preamble "#{options[:app_name]} | #{options[:env]} Configuration Templates"
       puts beanstalk.list_templates
     elsif options[:delete]
-      aws = Feefi::AWS.new app_config
+      if yes? "Are you sure you want to delete #{options[:name]}?"
+          beanstalk.delete_template options[:name]
+      end
     end
-
   end
 
   private
