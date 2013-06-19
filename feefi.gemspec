@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Feefi::VERSION
   spec.authors       = ["Hank Beaver"]
   spec.email         = ["hbeaver@gmail.com"]
-  spec.description   = %q{Elastic Beanstalk CLI to tame the behemoth of ways to interact with Beanstalk}
+  spec.description   = %q{ Feefi, a not-so-giant sized CLI for AWS Elastic Beanstalk}
   spec.summary       = %q{}
   spec.homepage      = "http://www.github.com/blasterpal/feefi"
   spec.license       = "MIT"

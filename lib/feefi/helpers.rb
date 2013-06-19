@@ -6,7 +6,7 @@ module Feefi
       end
       # presumed to be used within method
       def app_config
-        Feefi::Config.app_config options[:app_name]
+        Feefi::Config.app_config options[:app]
       end
   end
 end

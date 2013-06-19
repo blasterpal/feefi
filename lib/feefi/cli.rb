@@ -23,14 +23,14 @@ class Feefi::Cli < Thor
   end
 
   desc "servers", "List servers for EB app environment "
-  method_option :app_name, :type => :string, :required => true
+  method_option :app, :type => :string, :required => true
   method_option :env, :type => :string, :required => true
   def servers
     s = beanstalk.servers options[:env]
   end
 
   desc "manage configurations templates", "Manage saved configuration templates for an app and environment"
-  method_option :app_name, :type => :string, :required => true
+  method_option :app, :type => :string, :required => true
   method_option :env, :type => :string, :required => true
   method_option :list, :type => :boolean
   method_option :delete, :type => :boolean
@@ -41,16 +41,58 @@ class Feefi::Cli < Thor
       exit
     end
     if options[:list]
-      preamble "#{options[:app_name]} | #{options[:env]} Configuration Templates"
+      preamble "#{options[:app]} | #{options[:env]} Configuration Templates"
       puts beanstalk.list_templates
     elsif options[:delete]
       if yes? "Are you sure you want to delete #{options[:name]}?"
-          beanstalk.delete_template options[:name]
+        beanstalk.delete_template options[:name]
       end
     end
   end
 
-  private
+  desc "environments", "List application environments"
+  method_option :app, :type => :string, :required => true
+  method_option :list, :type => :boolean
+  def environments
+    if options[:list]
+      preamble "#{options[:app]} environments"
+      puts beanstalk.environments
+    end
+  end
+
+  desc "Manage versions", "List and cleanup versions of code, starting last to first and also cleanups up S3."
+  method_option :app, :type => :string, :required => true
+  method_option :count, :type => :numeric
+  method_option :list, :type => :boolean
+  method_option :delete, :type => :boolean
+  def versions
+    unless options[:list] || options[:delete]
+      puts "No action specified, supply --list or --delete"
+      exit
+    end
+    if options[:delete]
+      count = options[:count].to_i
+      if yes? "Are you sure you want to delete #{options[:count] || 1} versions?"
+        beanstalk.cleanup_versions options[:count]
+      end
+    elsif options[:list]
+      preamble "Printing application versions..." 
+      versions = beanstalk.versions
+      puts versions.collect {|ea| "#{ea.created_at} | #{ea.label} | #{ea.description}" }
+      puts "--------"
+      puts "Count: #{versions.size}"
+    end
+  end
+
+  desc "beanstalk connection", "Drop you into pry and let you mess around"
+  method_option :app, :type => :string, :required => true
+  def repl
+    beanstalk
+    puts "Access the method 'beanstalk' for fun..."
+    Pry.start self, :quiet => true
+  end
+
+  protected
   def connection
     @connection ||= Feefi::AWS::Connection.new app_config
   end
