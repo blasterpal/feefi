@@ -1,10 +1,12 @@
 module Feefi
-  class Helpers
-    class << self
+  module Helpers
       def preamble(message)
         puts "#{message}"
         puts "-----------"
       end
-    end
+      # presumed to be used within method
+      def app_config
+        Feefi::Config.app_config options[:app_name]
+      end
   end
 end
