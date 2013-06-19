@@ -1,6 +1,5 @@
 # Feefi (alpha)
-
-Feefi a not-so-giant sized CLI for Elastic Beanstalk
+Feefi, a not-so-giant sized CLI for AWS Elastic Beanstalk
 
 ## Installation
 

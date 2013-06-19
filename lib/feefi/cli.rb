@@ -1,8 +1,10 @@
 require 'feefi'
-require 'feefi/aws'
 require 'feefi/config'
 require 'feefi/setup'
 require 'feefi/helpers'
+require 'feefi/aws/connection'
+require 'feefi/aws/beanstalk'
+
 
 class Feefi::Cli < Thor
 
@@ -23,7 +25,6 @@ class Feefi::Cli < Thor
   method_option :app_name, :type => :string, :required => true
   method_option :env, :type => :string, :required => true
   def servers
-    beanstalk = Feefi::AWS.new app_config
     s = beanstalk.servers options[:env]
   end
 
@@ -39,13 +40,21 @@ class Feefi::Cli < Thor
       exit
     end
     if options[:list]
-      aws = Feefi::AWS.new app_config
       preamble "#{options[:app_name]} | #{options[:env]} Configuration Templates"
-      puts aws.configuration_templates
+      puts beanstalk.list_templates
     elsif options[:delete]
-
+      aws = Feefi::AWS.new app_config
     end
 
+  end
+
+  private
+  def connection
+    @connection ||= Feefi::AWS::Connection.new app_config
+  end
+
+  def beanstalk
+    @beanstalk ||= Feefi::AWS::Beanstalk.new connection, app_config
   end
 
 end
