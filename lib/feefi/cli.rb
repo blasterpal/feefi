@@ -29,24 +29,18 @@ class Feefi::Cli < Thor
     s = beanstalk.servers options[:env]
   end
 
-  desc "manage configurations templates", "Manage saved configuration templates for an app and environment"
+  desc "templates", "list templates, to delete a template: --delete --name <template_name>"
   method_option :app, :type => :string, :required => true
-  method_option :env, :type => :string, :required => true
-  method_option :list, :type => :boolean
   method_option :delete, :type => :boolean
   method_option :name, :type => :string
   def templates
-    unless options[:list] || options[:delete]
-      puts "No action specified, supply --list or --delete"
-      exit
-    end
-    if options[:list]
-      preamble "#{options[:app]} | #{options[:env]} Configuration Templates"
-      puts beanstalk.list_templates
-    elsif options[:delete]
+    if options[:delete]
       if yes? "Are you sure you want to delete #{options[:name]}?"
         beanstalk.delete_template options[:name]
       end
+    else
+      preamble "#{options[:app]} | #{options[:env]} Configuration Templates"
+      puts beanstalk.list_templates
     end
   end
 
@@ -60,10 +54,9 @@ class Feefi::Cli < Thor
     end
   end
 
-  desc "Manage versions", "List and cleanup versions of code, starting last to first and also cleanups up S3."
+  desc "Manage versions", "List and cleanup versions, to delete --delete --count <num of old releases>"
   method_option :app, :type => :string, :required => true
   method_option :count, :type => :numeric
-  method_option :list, :type => :boolean
   method_option :delete, :type => :boolean
   def versions
     unless options[:list] || options[:delete]
@@ -75,7 +68,7 @@ class Feefi::Cli < Thor
       if yes? "Are you sure you want to delete #{options[:count] || 1} versions?"
         beanstalk.cleanup_versions options[:count]
       end
-    elsif options[:list]
+    else options[:list]
       preamble "Printing application versions..." 
       versions = beanstalk.versions
       puts versions.collect {|ea| "#{ea.created_at} | #{ea.label} | #{ea.description}" }

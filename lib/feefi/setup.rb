@@ -14,14 +14,22 @@ module Feefi
           content = 
             {:apps => [{
                   :name => 'my_beanstalk_app',
-                  :beanstalk_config => {},
+                  :beanstalk_config => {
+                    :region => 'us-east-1',
+                    :dev_tools_endpoint => 'git.elasticbeanstalk.us-east-1.amazonaws.com',
+                    :service_endpoint => 'https://elasticbeanstalk.us-east-1.amazonaws.com'
+                     } ,
                   :aws_id => 'ASADFADFSDF',
                   :aws_secret => '!@#$!@#!@$',
                   :environments => ['staging','production']},
                   
               {
                   :name => 'my_beanstalk_app2',
-                  :beanstalk_config => {},
+                  :beanstalk_config => {
+                    :region => 'us-east-1',
+                    :dev_tools_endpoint => 'git.elasticbeanstalk.us-east-1.amazonaws.com',
+                    :service_endpoint => 'https://elasticbeanstalk.us-east-1.amazonaws.com'
+                     } ,
                   :aws_id => 'ASADFADFSDF',
                   :aws_secret => '!@#$!@#!@$',
                   :environments => ['staging','production']}
