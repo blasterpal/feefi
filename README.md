@@ -28,22 +28,30 @@ for each.
 
 ## TODO
 
-0. TESTS!
-1. Add interactive add/delete of apps and credentials
-2. Install git hooks into current repo
-3. pem/key management
-4. delete versions
-5. zero-downtime deploy: create environment using template, incremnent
-   name-number +1, deploy.
-6. zero-downtime cut over - with DNS plugin too?
+### High: 
+
+* Tests
+* setup git deployment
+* zero-downtime deploy: 
+  - create environment using template
+  -  incremnent name-number +1
+  - create convention for environment names (env-app-vX), there is
+    length limit on hostname.
+
+
+## Low:
+
+* Add interactive add/delete of apps and credentials
+* pem/key management
+* zero-downtime cut over - DNS swing
 
 
 ## Contributing
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+Fork it
+Create your feature branch (`git checkout -b my-new-feature`)
+Commit your changes (`git commit -am 'Add some feature'`)
+Push to the branch (`git push origin my-new-feature`)
+Create new Pull Request
 
 
