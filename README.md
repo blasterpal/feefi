@@ -3,17 +3,13 @@ Feefi, a not-so-giant sized CLI for AWS Elastic Beanstalk
 
 ## Installation
 
-    ```
     $ gem install feefi
-    ```
 
 ## Usage
 
 1. Create a the skeleton config directory and file.
 
-    ```
     $ feefi setup
-    ```
 
 2. Edit ~/.feefi/feefi.conf and add your own Beanstalk apps(s) and AWS credentials
 for each. 
@@ -22,9 +18,10 @@ for each.
    or an agent for deploys and logging into systems.
 
 4. Start using it!
-
+    
+    ```
     $ feefi help
-
+    ```
 
 ## TODO
 
