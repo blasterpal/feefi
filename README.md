@@ -9,7 +9,7 @@ Feefi, a not-so-giant sized CLI for AWS Elastic Beanstalk
 
 1. Create a the skeleton config directory and file.
 
-    $ feefi setup
+      $ feefi setup
 
 2. Edit ~/.feefi/feefi.conf and add your own Beanstalk apps(s) and AWS credentials
 for each. 
@@ -19,9 +19,7 @@ for each.
 
 4. Start using it!
     
-    ```
-    $ feefi help
-    ```
+      $ feefi help
 
 ## TODO
 
@@ -46,9 +44,13 @@ for each.
 ## Contributing
 
 Fork it
+
 Create your feature branch (`git checkout -b my-new-feature`)
+
 Commit your changes (`git commit -am 'Add some feature'`)
+
 Push to the branch (`git push origin my-new-feature`)
+
 Create new Pull Request
 
 
