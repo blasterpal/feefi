@@ -1,6 +1,10 @@
 # Feefi (alpha)
 Feefi, a not-so-giant sized CLI for AWS Elastic Beanstalk
 
+** Notice ** This project is dormant at the moment. Amazon's latest
+CLI and other tools since gaining momentum, i.e. Docker, make this less important. I might
+revisit as landscape changes.
+
 ## Installation
 
     $ gem install feefi
