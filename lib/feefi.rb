@@ -1,4 +1,5 @@
 require "feefi/version"
+require 'feefi/helpers'
 require 'thor'
 
 # dev gems

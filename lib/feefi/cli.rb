@@ -18,7 +18,7 @@ class Feefi::Cli < Thor
 
   desc "apps", "List apps"
   def apps
-    Feefi::Helpers.preamble "Your apps"
+    preamble "Your apps"
     puts Feefi::Config.apps.map(&:name)
   end
 
